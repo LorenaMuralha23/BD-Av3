@@ -75,7 +75,8 @@ ALTER TABLE `av3-bd`.`tb_reservation`
 CHANGE COLUMN `date` `reservation_date` DATE NOT NULL ;
 ALTER TABLE `av3-bd`.`tb_reservation` 
 CHANGE COLUMN `date` `reservation_date` DATE NOT NULL ;
-
+ALTER TABLE `av3-bd`.`tb_client` 
+CHANGE COLUMN `name` `client_name` VARCHAR(200) NOT NULL ;
 
 INSERT INTO tb_table (number, capacity, location) VALUES (1, 2, 21);
 INSERT INTO tb_table (number, capacity, location) VALUES (2, 2, 22);
