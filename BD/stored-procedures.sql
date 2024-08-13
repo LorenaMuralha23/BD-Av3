@@ -1,4 +1,4 @@
-/*Retorna se existe uma mesa disponível para aquele determinado dia
+/*Retorna se existe uma mesa disponível para aquele determinado dia*/
 DELIMITER $$
 CREATE PROCEDURE reserved_tables_by_date (
 	IN reservation_date DATE,
@@ -39,7 +39,7 @@ END$$
 DELIMITER ;*/
 
 
-/*DELIMITER $$
+DELIMITER $$
 CREATE PROCEDURE cancel_reservation (
 	IN reservation_date DATE,
     IN reservation_hour INT,
@@ -65,7 +65,7 @@ BEGIN
 	END IF;
 
 END$$
-DELIMITER ;*/
+DELIMITER ;
 
 DELIMITER $$
 
