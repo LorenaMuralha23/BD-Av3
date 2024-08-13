@@ -75,6 +75,10 @@ public class Reservation {
         this.idClient = client.getId();
     }
     
+    public void setTableId(Table table){
+        this.idTable = table.getId();
+    }
+    
     public int getTableId() {
         return idTable;
     }

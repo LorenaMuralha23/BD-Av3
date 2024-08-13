@@ -119,11 +119,13 @@ public class DAOs {
 
             try ( ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
+                    int idTable = resultSet.getInt("id");
                     int tableNumber = resultSet.getInt("number");
                     int tableCapacity = resultSet.getInt("capacity");
                     int tableLocation = resultSet.getInt("location");
                     Table table = new Table(tableNumber, tableCapacity, tableLocation);
                     tables.add(table);
+                    table.setId(idTable);
                 }
             }
         }
@@ -151,4 +153,26 @@ public class DAOs {
         return table;
     }
 
+    public Client getClientByInfo(String name, String email, String phone) throws SQLException{
+         String sql = "SELECT * FROM tb_client WHERE tb_client.client_name = ? AND tb_client.email = ? AND tb_client.phone = ?";
+         Client client = null;
+
+         try ( PreparedStatement preparedStatement = this.conn.prepareStatement(sql)) {
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, email);
+            preparedStatement.setString(3, phone);
+
+            try ( ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int idClient = resultSet.getInt("id");
+                    String clientName = resultSet.getString("client_name");
+                    String clientEmail = resultSet.getString("email");
+                    String clientPhone = resultSet.getString("phone");
+                    client = new Client(clientName, clientEmail, clientPhone);
+                    client.setId(idClient);
+                }
+            }
+        }
+        return client;
+    }
 }

@@ -80,8 +80,7 @@ BEGIN
     
     SELECT COUNT(*) INTO client_exists 
     FROM tb_client 
-    WHERE client_name = client_name 
-      AND email = client_email 
+    WHERE email = client_email 
       AND phone = client_phone;
     
     IF client_exists = 0 THEN
