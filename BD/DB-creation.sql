@@ -49,8 +49,8 @@ CREATE TABLE IF NOT EXISTS `Av3-BD`.`tb_reservation` (
   `id_client` INT NOT NULL,
   `id_table` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_Reservation_Client_idx` (`id_client` ASC),
-  INDEX `fk_Reservation_Table1_idx` (`id_table` ASC),
+  INDEX `fk_Reservation_Client_idx` (`id_client` ASC) VISIBLE,
+  INDEX `fk_Reservation_Table1_idx` (`id_table` ASC) VISIBLE,
   CONSTRAINT `fk_Reservation_Client`
     FOREIGN KEY (`id_client`)
     REFERENCES `Av3-BD`.`tb_client` (`id`)
@@ -73,6 +73,9 @@ ADD COLUMN `num_people` INT NOT NULL AFTER `id_table`;
 
 ALTER TABLE `av3-bd`.`tb_reservation` 
 CHANGE COLUMN `date` `reservation_date` DATE NOT NULL ;
+ALTER TABLE `av3-bd`.`tb_reservation` 
+CHANGE COLUMN `date` `reservation_date` DATE NOT NULL ;
 ALTER TABLE `av3-bd`.`tb_client` 
 CHANGE COLUMN `name` `client_name` VARCHAR(200) NOT NULL ;
+
 
